@@ -1,3 +1,5 @@
+// Vs code shoortcut for creating class component ==> cc
+
 import React from 'react'
 
 class Navbar extends React.Component {
