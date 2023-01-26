@@ -50,13 +50,22 @@ function App() {
     setTotalAmount(newTotalAmount);
   }
 
+  const resetQuantity = () =>{
+    let newProductList = [...productList]
+    newProductList.map((productList) =>{
+      productList.quantity = 0
+    })
+    setProductList(newProductList);
+    setTotalAmount(0);
+  }
+
   return (
     <>
     <Navbar />
     <main className='container mt-5'>
       <ProductList productList = {productList} incrementQuantity = {incrementQuantity} decrementQuantity = {decrementQuantity}/>
     </main>
-    <Footer totalAmount = {totalAmount}/>
+    <Footer totalAmount = {totalAmount} resetQuantity = {resetQuantity}/>
     </>
   );
 }
