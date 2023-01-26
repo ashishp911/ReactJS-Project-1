@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import React, {useState} from 'react'
-import Navbar from './components/Navbar.js';
-import ProductList from './components/ProductList.js'
-import Footer from './components/footer.js'
-
-
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState } from "react";
+import Navbar from "./components/Navbar.js";
+import ProductList from "./components/ProductList.js";
+import Footer from "./components/footer.js";
 
 function App() {
   const products = [
@@ -19,7 +17,7 @@ function App() {
       price: 9999,
       quantity: 0,
     },
-  ]
+  ];
   // To use setState in a functional component, we use state hook.
   const [productList, setProductList] = useState(products);
   // update total amount for footer
@@ -32,40 +30,55 @@ function App() {
     newTotalAmount += newProductList[index].price;
     setProductList(newProductList);
     setTotalAmount(newTotalAmount);
-  }
+  };
 
   const decrementQuantity = (index) => {
-    // Make sure that the value after decrementing is not less than 0, 
-    let newProductList = [...productList]
+    // Make sure that the value after decrementing is not less than 0,
+    let newProductList = [...productList];
     let newTotalAmount = totalAmount;
-    if(newProductList[index].quantity > 0) {
+    if (newProductList[index].quantity > 0) {
       newProductList[index].quantity--;
       newTotalAmount -= newProductList[index].price;
-    }
-    else{
-      newProductList[index].quantity = 0
+    } else {
+      newProductList[index].quantity = 0;
     }
     // newProductList[index].quantity > 0 ? newProductList[index].quantity-- :  newProductList[index].quantity = 0
     setProductList(newProductList);
     setTotalAmount(newTotalAmount);
-  }
+  };
 
-  const resetQuantity = () =>{
-    let newProductList = [...productList]
-    newProductList.map((productList) =>{
-      productList.quantity = 0
-    })
+  const resetQuantity = () => {
+    let newProductList = [...productList];
+    newProductList.map((productList) => {
+      productList.quantity = 0;
+    });
     setProductList(newProductList);
     setTotalAmount(0);
-  }
+  };
+
+  const removeItem = (index) => {
+    let newProductList = [...productList];
+    let newTotalAmount = totalAmount;
+    newTotalAmount -=
+      newProductList[index].quantity * newProductList[index].price;
+    newProductList.splice(index, 1);
+
+    setProductList(newProductList);
+    setTotalAmount(newTotalAmount);
+  };
 
   return (
     <>
-    <Navbar />
-    <main className='container mt-5'>
-      <ProductList productList = {productList} incrementQuantity = {incrementQuantity} decrementQuantity = {decrementQuantity}/>
-    </main>
-    <Footer totalAmount = {totalAmount} resetQuantity = {resetQuantity}/>
+      <Navbar />
+      <main className="container mt-5">
+        <ProductList
+          productList={productList}
+          incrementQuantity={incrementQuantity}
+          decrementQuantity={decrementQuantity}
+          removeItem={removeItem}
+        />
+      </main>
+      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} />
     </>
   );
 }

@@ -30,10 +30,12 @@ export default function Product(props) {
       <div className="col-2">
         Rs. {props.product.quantity * props.product.price} 
       </div>
-{/*       
-      <button className="col-2 btn btn-danger">
+      
+      <button className="col-2 btn btn-danger" onClick={()=>{
+        props.removeItem(props.index);
+      }}>
         Remove Item
-      </button> */}
+      </button>
     </div>
   );
 }
