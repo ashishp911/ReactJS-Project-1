@@ -11,16 +11,16 @@ export default function Product(props) {
         </h2>
       </div>
         <div className="col-3">
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary" onClick={() => {
+            <div className="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" className="btn btn-outline-primary" onClick={() => {
                 props.decrementQuantity(props.index)
             }}>
                 -
             </button>
-            <button type="button" class="btn btn-outline-primary">
+            <button type="button" className="btn btn-outline-primary">
                 {props.product.quantity}
             </button>   
-            <button type="button" class="btn btn-outline-primary" onClick={() => {
+            <button type="button" className="btn btn-outline-primary" onClick={() => {
                 props.incrementQuantity(props.index)
             }}>
                 +

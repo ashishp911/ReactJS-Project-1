@@ -1,13 +1,24 @@
 import React from 'react'
 
 class AddItem extends React.Component{
+    // To use props in a class component, we use this.props
+    constructor(props){
+        super(props);
+        this.state = {
+            productName : "",
+            productPrice : 0
+        };
+    };
   render() {
     const styles = {
         border: '3px solid rgba(0, 0, 0, 0.3)', 
    };
     return (
       <div>
-        <form>
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            this.props.addItem(this.state.productName, Number(this.state.productPrice));
+          }}>
           <div className="col-6">
             <label htmlFor="inputName">Name</label>
             <input
@@ -17,6 +28,11 @@ class AddItem extends React.Component{
               aria-describedby="name"
               placeholder="Enter your name"
               style={styles}
+              name = "productName"
+              onChange={(e) => {
+                this.setState({productName : e.currentTarget.value})
+              }}
+              value = {this.state.productName}
             />
           </div>
 
@@ -28,6 +44,11 @@ class AddItem extends React.Component{
               id="inputPrice"
               placeholder="Enter price"
               style={styles}
+              name = "productPrice"
+              onChange={(e) => {
+                this.setState({productPrice: Number(e.currentTarget.value)})
+              }}
+              value = {this.state.productPrice}
             />
           </div>
           <button type="submit" className="btn btn-primary">
