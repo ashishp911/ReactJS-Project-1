@@ -3,7 +3,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Navbar from "./components/Navbar.js";
 import ProductList from "./components/ProductList.js";
-import Footer from "./components/footer.js";
+import Footer from "./components/Footer.js";
 import AddItem from "./components/AddItem.js";
 
 function App() {
