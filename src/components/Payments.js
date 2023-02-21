@@ -19,6 +19,11 @@ const Payments = (props) => {
 
   const handleInputChange = (e) => {
     setPaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
+    // const { name, value } = e.target;
+    // setPaymentInfo({
+    //   ...paymentInfo,
+    //   [name]: value
+    // });
   };
 
   const handleSubmit = (e) => {
@@ -45,6 +50,7 @@ const Payments = (props) => {
               <h6>Name</h6>
             </label>
             <input
+              name="name"
               type="text"
               className="form-control"
               id="exampleInputName"
@@ -60,6 +66,7 @@ const Payments = (props) => {
               <h6>Email address</h6>
             </label>
             <input
+              name="email"
               type="email"
               className="form-control"
               id="exampleInputEmail1"
@@ -78,7 +85,8 @@ const Payments = (props) => {
               <h6>Street Address</h6>
             </label>
             <input
-              type="password"
+              name="streetAddress"
+              type="text"
               className="form-control"
               id="exampleInputPassword1"
               placeholder="Enter your address"
@@ -94,6 +102,7 @@ const Payments = (props) => {
                 <h6>Zip Code</h6>
               </label>
               <input
+                name="zipCode"
                 type="text"
                 className="form-control"
                 id="exampleInputZipcode"
@@ -109,6 +118,7 @@ const Payments = (props) => {
                 <h6>City</h6>
               </label>
               <input
+              name="city"
                 type="text"
                 className="form-control"
                 id="exampleInputCity"
@@ -123,6 +133,7 @@ const Payments = (props) => {
                 <h6>Country</h6>
               </label>
               <input
+              name="country"
                 type="text"
                 className="form-control"
                 id="exampleInputCountry"
@@ -140,12 +151,13 @@ const Payments = (props) => {
               <h6>Card Number</h6>
             </label>
             <input
+            name="cardNumber"
               type="text"
               className="form-control"
               id="exampleInputCardNum"
               placeholder="1234 5678 9012 3457"
-              minlength="19" 
-              maxlength="19"
+              minLength="19" 
+              maxLength="19"
               style={borderStyles}
               value={paymentInfo.cardNumber} 
               onChange={handleInputChange}
@@ -159,6 +171,7 @@ const Payments = (props) => {
               <h6>Cardholder Name</h6>
             </label>
             <input
+            name="cardHolderName"
               type="text"
               className="form-control"
               id="exampleInputCardName"
@@ -176,10 +189,13 @@ const Payments = (props) => {
               <h6>Expiration </h6>
             </label>
             <input
+              name="expiration"
               type="text" id="exampleInputExp" 
               className="form-control" placeholder="MM/YYYY"
-              size="7" minlength="7" maxlength="7" 
+              size="7" minLength="7" maxLength="7" 
               style={borderStyles}
+              value={paymentInfo.expiration} 
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-2 col-6">
@@ -187,11 +203,12 @@ const Payments = (props) => {
               <h6>CVV</h6>
             </label>
             <input
+              name="cvv"
               type="password"
               className="form-control"
               id="typeText2"
               placeholder="&#9679;&#9679;&#9679;"
-              size="1" minlength="3" maxlength="3"
+              size="1" minLength="3" maxLength="3"
               style={borderStyles}
               value={paymentInfo.cvv} 
               onChange={handleInputChange}
