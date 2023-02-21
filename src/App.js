@@ -3,8 +3,10 @@ import "./App.css";
 import React, { useState } from "react";
 import Navbar from "./components/Navbar.js";
 import ProductList from "./components/ProductList.js";
-import Footer from "./components/footer.js";
+import Footer from "./components/Footer.js";
 import AddItem from "./components/AddItem.js";
+import { BrowserRouter as Router, Routes, Route, useNavigate} from "react-router-dom";
+import Payments from "./components/Payments";
 
 function App() {
   const products = [
@@ -61,40 +63,64 @@ function App() {
     let newProductList = [...productList];
     let newTotalAmount = totalAmount;
     newTotalAmount -=
-    newProductList[index].quantity * newProductList[index].price;
+      newProductList[index].quantity * newProductList[index].price;
     newProductList.splice(index, 1);
-    
+
     setProductList(newProductList);
     setTotalAmount(newTotalAmount);
   };
-  
+
   const addItem = (name, price) => {
     let newProductList = [...productList];
     newProductList.push({
-      name : name,
-      price : price,
-      quantity : 0
-    })
+      name: name,
+      price: price,
+      quantity: 0,
+    });
     setProductList(newProductList);
-  }
+  };
+
   const myFunc = () => {
-    
-  }
+    console.log("I am Here and stuck");
+  };
+
   return (
     <>
-      <Navbar />
-      <main className="container mt-5">
-        <AddItem addItem = {addItem} />
-        <ProductList
-          productList={productList}
-          incrementQuantity={incrementQuantity}
-          decrementQuantity={decrementQuantity}
-          removeItem={removeItem}
+      <Router>
+        <Navbar />
+        <main className="container mt-5">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={[
+                <AddItem addItem={addItem} />,
+                <ProductList
+                  productList={productList}
+                  incrementQuantity={incrementQuantity}
+                  decrementQuantity={decrementQuantity}
+                  removeItem={removeItem}
+                />,
+              ]}
+            />
+            <Route
+              exact
+              path="/payment"
+              element={<Payments totalAmount={totalAmount} />}
+            />
+          </Routes>
+        </main>
+
+        <Footer
+          totalAmount={totalAmount}
+          resetQuantity={resetQuantity}
+          myFunc={myFunc}
         />
-      </main>
-      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} myFunc = {myFunc}/>
+      </Router>
     </>
   );
 }
 
 export default App;
+
+
