@@ -29,12 +29,13 @@ const Payments = (props) => {
   };
   return (
     <>
-      <h1> This is Payments page {props.totalAmount} </h1>
+      <h1> This is Payments page </h1>
+      <hr />
       <form>
         <div className="row">
           <div className="mb-2 col-6">
             <label htmlFor="exampleInputName" className="form-label">
-              Name
+              <h6>Name</h6>
             </label>
             <input
               type="text"
@@ -46,7 +47,7 @@ const Payments = (props) => {
           </div>
           <div className="mb-2 col-6">
             <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
+              <h6>Email address</h6>
             </label>
             <input
               type="email"
@@ -61,7 +62,7 @@ const Payments = (props) => {
         <div className="row">
           <div className="mb-2 col-6">
             <label htmlFor="exampleInputPassword1" className="form-label">
-              Street Address
+              <h6>Street Address</h6>
             </label>
             <input
               type="password"
@@ -74,7 +75,7 @@ const Payments = (props) => {
         <div className="row">
             <div className="mb-2 col-2">
               <label htmlFor="exampleInputPassword1" className="form-label">
-                Zip Code
+                <h6>Zip Code</h6>
               </label>
               <input
                 type="password"
@@ -85,7 +86,7 @@ const Payments = (props) => {
             </div>
             <div className="mb-2 col-2">
               <label htmlFor="exampleInputPassword1" className="form-label">
-                City
+                <h6>City</h6>
               </label>
               <input
                 type="password"
@@ -96,7 +97,7 @@ const Payments = (props) => {
             </div>
             <div className="mb-2 col-2">
               <label htmlFor="exampleInputPassword1" className="form-label">
-                Country
+                <h6>Country</h6>
               </label>
               <input
                 type="password"
@@ -134,7 +135,32 @@ const Payments = (props) => {
           </div>
           </div>
 
-        <button type="submit" className="btn btn-primary my-2">
+          <div className="row mt-3">
+          <div className="mb-2 col-6">
+            <label htmlFor="exampleInputPassword1" className="form-label" placeholder="1234 5678 9012 3457" >
+              <h6>Expiration </h6>
+            </label>
+            <input
+              type="text" id="exp" 
+              className="form-control" placeholder="MM/YYYY"
+              size="7" minlength="7" maxlength="7" 
+            />
+          </div>
+          <div className="mb-2 col-6">
+            <label htmlFor="exampleInputPassword1" className="form-label" placeholder="1234 5678 9012 3457" >
+              <h6>CVV</h6>
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="typeText2"
+              placeholder="&#9679;&#9679;&#9679;"
+              size="1" minlength="3" maxlength="3"
+            />
+          </div>
+          </div>
+
+        <button type="submit" className="btn btn-info btn-lg btn-rounded my-2">
           PAY NOW
         </button>
       </form>
