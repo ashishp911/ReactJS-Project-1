@@ -4,25 +4,28 @@ import { useNavigate } from "react-router-dom";
 const Payments = (props) => {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    billingAddress: "",
-    cardNumber: "",
-    cardholderName: "",
-    expiration: "",
-    cvv: "",
+  const [paymentInfo, setPaymentInfo] = useState({
+    name: '',
+    email: '',
+    streetAddress: '',
+    zipCode : '',
+    city : '',
+    country : '',
+    cardNumber: '',
+    cardHolderName: '',
+    expiration: '',
+    cvv: ''
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    setPaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // do something with the form data, like submit it to a server
+    console.log(paymentInfo); // do something with the form data, like submit it to a server
   };
+
   const backToHome = () => {
     // 👇️ navigate programmatically
     navigate("/");
@@ -30,11 +33,12 @@ const Payments = (props) => {
   const borderStyles = {
     border: '3px solid rgba(0, 0, 0, 0.3)', 
     };
+
   return (
     <>
       <h1> This is Payments page </h1>
       <hr />
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="mb-2 col-6">
             <label htmlFor="exampleInputName" className="form-label">
@@ -47,6 +51,8 @@ const Payments = (props) => {
               aria-describedby="namelHelp"
               placeholder="Enter your Name"
               style={borderStyles}
+              value={paymentInfo.name} 
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-2 col-6">
@@ -60,6 +66,8 @@ const Payments = (props) => {
               aria-describedby="emailHelp"
               placeholder="Enter your Email Id"
               style={borderStyles}
+              value={paymentInfo.email} 
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -74,6 +82,9 @@ const Payments = (props) => {
               className="form-control"
               id="exampleInputPassword1"
               placeholder="Enter your address"
+              style={borderStyles}
+              value={paymentInfo.streetAddress} 
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -89,6 +100,8 @@ const Payments = (props) => {
                 placeholder="Zipcode"
                 pattern="[0-9]{5}"
                 style={borderStyles}
+                value={paymentInfo.zipCode} 
+              onChange={handleInputChange}
               />
             </div>
             <div className="mb-2 col-2">
@@ -101,6 +114,8 @@ const Payments = (props) => {
                 id="exampleInputCity"
                 placeholder="City"
                 style={borderStyles}
+                value={paymentInfo.city} 
+              onChange={handleInputChange}
               />
             </div>
             <div className="mb-2 col-2">
@@ -113,6 +128,8 @@ const Payments = (props) => {
                 id="exampleInputCountry"
                 placeholder="Country"
                 style={borderStyles}
+                value={paymentInfo.country} 
+              onChange={handleInputChange}
               />
             </div>
           </div>
@@ -130,6 +147,8 @@ const Payments = (props) => {
               minlength="19" 
               maxlength="19"
               style={borderStyles}
+              value={paymentInfo.cardNumber} 
+              onChange={handleInputChange}
             />
           </div>
           <div className="mt-3 col-1">
@@ -145,6 +164,8 @@ const Payments = (props) => {
               id="exampleInputCardName"
               placeholder="Cardholder Name"
               style={borderStyles}
+              value={paymentInfo.cardHolderName} 
+              onChange={handleInputChange}
             />
           </div>
           </div>
@@ -172,13 +193,23 @@ const Payments = (props) => {
               placeholder="&#9679;&#9679;&#9679;"
               size="1" minlength="3" maxlength="3"
               style={borderStyles}
+              value={paymentInfo.cvv} 
+              onChange={handleInputChange}
             />
           </div>
           </div>
 
-        <button type="submit" className="btn btn-info btn-lg btn-rounded my-2">
-          PAY NOW
-        </button>
+
+        <div className="row my-2">
+            <div className="col-9">
+                <h3>Your total amount is {props.totalAmount}</h3>
+            </div>
+            <div className="col-3">
+                <button type="submit" className="btn btn-info btn-lg btn-rounded">
+                    PAY NOW
+                </button>
+            </div>
+        </div>
       </form>
       <hr />
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -192,5 +223,3 @@ const Payments = (props) => {
 
 export default Payments;
 
-// Can you give me JSX for a payment form with the following fields Name, EmailId, Billing address, 
-// Card number, Cardholder Name, expiration, cvv and submit button
