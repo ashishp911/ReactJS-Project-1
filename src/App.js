@@ -3,7 +3,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Navbar from "./components/Navbar.js";
 import ProductList from "./components/ProductList.js";
-import Footer from "./components/Footer.js";
+import Footer from "./components/footer.js";
 import AddItem from "./components/AddItem.js";
 
 function App() {
@@ -77,6 +77,9 @@ function App() {
     })
     setProductList(newProductList);
   }
+  const myFunc = () => {
+    
+  }
   return (
     <>
       <Navbar />
@@ -89,7 +92,7 @@ function App() {
           removeItem={removeItem}
         />
       </main>
-      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} />
+      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} myFunc = {myFunc}/>
     </>
   );
 }
