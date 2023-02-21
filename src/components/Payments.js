@@ -27,6 +27,9 @@ const Payments = (props) => {
     // 👇️ navigate programmatically
     navigate("/");
   };
+  const borderStyles = {
+    border: '3px solid rgba(0, 0, 0, 0.3)', 
+    };
   return (
     <>
       <h1> This is Payments page </h1>
@@ -43,6 +46,7 @@ const Payments = (props) => {
               id="exampleInputName"
               aria-describedby="namelHelp"
               placeholder="Enter your Name"
+              style={borderStyles}
             />
           </div>
           <div className="mb-2 col-6">
@@ -55,6 +59,7 @@ const Payments = (props) => {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter your Email Id"
+              style={borderStyles}
             />
           </div>
         </div>
@@ -74,80 +79,90 @@ const Payments = (props) => {
         </div>
         <div className="row">
             <div className="mb-2 col-2">
-              <label htmlFor="exampleInputPassword1" className="form-label">
+              <label htmlFor="exampleInputZipcode" className="form-label">
                 <h6>Zip Code</h6>
               </label>
               <input
-                type="password"
+                type="text"
                 className="form-control"
-                id="exampleInputPassword1"
-                placeholder="417007"
+                id="exampleInputZipcode"
+                placeholder="Zipcode"
+                pattern="[0-9]{5}"
+                style={borderStyles}
               />
             </div>
             <div className="mb-2 col-2">
-              <label htmlFor="exampleInputPassword1" className="form-label">
+              <label htmlFor="exampleInputCity" className="form-label">
                 <h6>City</h6>
               </label>
               <input
-                type="password"
+                type="text"
                 className="form-control"
-                id="exampleInputPassword1"
+                id="exampleInputCity"
                 placeholder="City"
+                style={borderStyles}
               />
             </div>
             <div className="mb-2 col-2">
-              <label htmlFor="exampleInputPassword1" className="form-label">
+              <label htmlFor="exampleInputCountry" className="form-label">
                 <h6>Country</h6>
               </label>
               <input
-                type="password"
+                type="text"
                 className="form-control"
-                id="exampleInputPassword1"
+                id="exampleInputCountry"
                 placeholder="Country"
+                style={borderStyles}
               />
             </div>
           </div>
           <hr />
           <div className="row mt-3">
-          <div className="mb-2 col-6">
-            <label htmlFor="exampleInputPassword1" className="form-label" placeholder="1234 5678 9012 3457" >
+          <div className="mb-2 col-5">
+            <label htmlFor="exampleInputCardNum" className="form-label" >
               <h6>Card Number</h6>
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
-              id="exampleInputPassword1"
+              id="exampleInputCardNum"
               placeholder="1234 5678 9012 3457"
               minlength="19" 
               maxlength="19"
+              style={borderStyles}
             />
           </div>
+          <div className="mt-3 col-1">
+            <img src="https://img.icons8.com/color/48/000000/visa.png" alt="visa" width="64px" />
+          </div>
           <div className="mb-2 col-6">
-            <label htmlFor="exampleInputPassword1" className="form-label" placeholder="1234 5678 9012 3457" >
+            <label htmlFor="exampleInputCardName" className="form-label">
               <h6>Cardholder Name</h6>
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
-              id="exampleInputPassword1"
+              id="exampleInputCardName"
               placeholder="Cardholder Name"
+              style={borderStyles}
             />
           </div>
           </div>
 
           <div className="row mt-3">
           <div className="mb-2 col-6">
-            <label htmlFor="exampleInputPassword1" className="form-label" placeholder="1234 5678 9012 3457" >
+            <label htmlFor="exampleInputExp" className="form-label">
               <h6>Expiration </h6>
             </label>
             <input
-              type="text" id="exp" 
+              type="text" id="exampleInputExp" 
               className="form-control" placeholder="MM/YYYY"
               size="7" minlength="7" maxlength="7" 
+              style={borderStyles}
             />
           </div>
           <div className="mb-2 col-6">
-            <label htmlFor="exampleInputPassword1" className="form-label" placeholder="1234 5678 9012 3457" >
+            <label htmlFor="exampleInputcvv" className="form-label" >
               <h6>CVV</h6>
             </label>
             <input
@@ -156,6 +171,7 @@ const Payments = (props) => {
               id="typeText2"
               placeholder="&#9679;&#9679;&#9679;"
               size="1" minlength="3" maxlength="3"
+              style={borderStyles}
             />
           </div>
           </div>
