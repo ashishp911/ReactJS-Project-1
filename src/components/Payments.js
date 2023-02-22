@@ -19,11 +19,6 @@ const Payments = (props) => {
 
   const handleInputChange = (e) => {
     setPaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
-    // const { name, value } = e.target;
-    // setPaymentInfo({
-    //   ...paymentInfo,
-    //   [name]: value
-    // });
   };
 
   const handleSubmit = (e) => {
@@ -215,7 +210,6 @@ const Payments = (props) => {
             />
           </div>
           </div>
-
 
         <div className="row my-2">
             <div className="col-9">
