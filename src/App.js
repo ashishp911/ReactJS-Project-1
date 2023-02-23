@@ -80,9 +80,6 @@ function App() {
     setProductList(newProductList);
   };
 
-  const myFunc = () => {
-    console.log("I am Here and stuck");
-  };
 
   return (
     <>
@@ -114,7 +111,6 @@ function App() {
         <Footer
           totalAmount={totalAmount}
           resetQuantity={resetQuantity}
-          myFunc={myFunc}
         />
       </Router>
     </>
