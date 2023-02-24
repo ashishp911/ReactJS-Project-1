@@ -21,11 +21,24 @@ const Payments = (props) => {
     setPaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(paymentInfo); // do something with the form data, like submit it to a server
-  };
+    // console.log(paymentInfo); // do something with the form data, like submit it to a server
 
+    // Setting up POST to {send to backend}
+    const options = {
+        method : "POST",
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        body : JSON.stringify(paymentInfo)
+
+    }
+    const response = await fetch('/api', options);
+    const data = await response.json();
+    console.log(data);
+  };
+  
   const backToHome = () => {
     // 👇️ navigate programmatically
     navigate("/");
